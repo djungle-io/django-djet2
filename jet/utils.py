@@ -11,7 +11,7 @@ from django.http import HttpResponse
 from django.urls import reverse, resolve, NoReverseMatch
 
 from django.contrib.admin import AdminSite
-from django.utils.encoding import smart_text
+from django.utils.encoding import smart_str
 from django.utils.text import capfirst
 from django.contrib import messages
 from django.utils.encoding import force_text
@@ -145,7 +145,7 @@ class LazyDateTimeEncoder(json.JSONEncoder):
 def get_model_instance_label(instance):
     if getattr(instance, "related_label", None):
         return instance.related_label()
-    return smart_text(instance)
+    return smart_str(instance)
 
 
 class SuccessMessageMixin(object):
