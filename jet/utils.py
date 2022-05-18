@@ -14,7 +14,7 @@ from django.contrib.admin import AdminSite
 from django.utils.encoding import smart_str
 from django.utils.text import capfirst
 from django.contrib import messages
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.functional import Promise
 from django.contrib.admin.options import IncorrectLookupParameters
 from django.contrib import admin
@@ -138,7 +138,7 @@ class LazyDateTimeEncoder(json.JSONEncoder):
         if isinstance(obj, datetime.datetime) or isinstance(obj, datetime.date):
             return obj.isoformat()
         elif isinstance(obj, Promise):
-            return force_text(obj)
+            return force_str(obj)
         return self.encode(obj)
 
 
