@@ -11,10 +11,10 @@ from django.http import HttpResponse
 from django.urls import reverse, resolve, NoReverseMatch
 
 from django.contrib.admin import AdminSite
-from django.utils.encoding import smart_text
+from django.utils.encoding import smart_str
 from django.utils.text import capfirst
 from django.contrib import messages
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.functional import Promise
 from django.contrib.admin.options import IncorrectLookupParameters
 from django.contrib import admin
@@ -138,14 +138,14 @@ class LazyDateTimeEncoder(json.JSONEncoder):
         if isinstance(obj, datetime.datetime) or isinstance(obj, datetime.date):
             return obj.isoformat()
         elif isinstance(obj, Promise):
-            return force_text(obj)
+            return force_str(obj)
         return self.encode(obj)
 
 
 def get_model_instance_label(instance):
     if getattr(instance, "related_label", None):
         return instance.related_label()
-    return smart_text(instance)
+    return smart_str(instance)
 
 
 class SuccessMessageMixin(object):
@@ -204,6 +204,7 @@ def get_model_queryset(admin_site, model, request, preserved_filters=None):
     actions = model_admin.get_actions(request)
     if actions:
         list_display = ['action_checkbox'] + list(list_display)
+    sortable_by = model_admin.get_sortable_by(request)
 
     ChangeList = model_admin.get_changelist(request)
 
@@ -211,14 +212,7 @@ def get_model_queryset(admin_site, model, request, preserved_filters=None):
         request, model, list_display, list_display_links, list_filter,
         model_admin.date_hierarchy, search_fields, list_select_related,
         model_admin.list_per_page, model_admin.list_max_show_all,
-        model_admin.list_editable, model_admin]
-
-    try:
-        sortable_by = model_admin.get_sortable_by(request)
-        change_list_args.append(sortable_by)
-    except AttributeError:
-        # django version < 2.1
-        pass
+        model_admin.list_editable, model_admin, sortable_by]
 
     try:
         cl = ChangeList(*change_list_args)
