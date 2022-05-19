@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.0.13
+------
+* Fix compatibility with Django 3.2+
+* Fix frontend compilation with modern node.js
+
 1.0.12
 ------
 * Fix compatibility with Django 3
