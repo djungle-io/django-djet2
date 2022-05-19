@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}-frontend
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build frontend
+    runs-on: ubuntu-20.04
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16.x'
+        cache: 'yarn'
+
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+
+    - name: Build bundles
+      run: npx gulp build-js
