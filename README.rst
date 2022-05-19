@@ -1,23 +1,18 @@
-===========
-Django JET2
-===========
+============
+Django DJET2
+============
 
-.. image:: https://travis-ci.org/tikservices/django-jet2.svg?branch=master
-    :target: https://travis-ci.org/tikservices/django-jet2
+Django admin interface based on django-jet (and django-jet2) forked for recent Django.
 
-**Next Generation django-jet2 (Modern template for Django admin interface with improved functionality)**
-
-.. image:: https://raw.githubusercontent.com/tikservices/django-jet2/master/docs/_static/logo.png
+.. image:: https://raw.githubusercontent.com/djungle-io/django-djet2/master/docs/_static/logo.png
     :width: 500px
     :height: 500px
     :scale: 50%
     :alt: Logo
     :align: center
 
-* Home page: https://github.com/tikservices/django-jet2
-* Documentation: http://django-jet2.rtfd.io/
-* PyPI: https://pypi.python.org/pypi/django-jet2
-* Support: support@tik.tn
+* Home page: https://github.com/djungle-io/django-djet2
+* PyPI: https://pypi.python.org/pypi/django-djet2
 
 Why Django JET?
 ===============
@@ -36,24 +31,24 @@ Screenshots
 
 Index dashboard
 
-.. image:: https://raw.githubusercontent.com/tikservices/django-jet2/master/docs/_static/screen1_720.png
+.. image:: https://raw.githubusercontent.com/djungle-io/django-djet2/master/docs/_static/screen1_720.png
     :alt: Screenshot #1
     :align: center
-    :target: https://raw.githubusercontent.com/tikservices/django-jet2/master/docs/_static/screen1.png
+    :target: https://raw.githubusercontent.com/djungle-io/django-djet2/master/docs/_static/screen1.png
 
 Changelist
 
-.. image:: https://raw.githubusercontent.com/tikservices/django-jet2/master/docs/_static/screen2_720.png
+.. image:: https://raw.githubusercontent.com/djungle-io/django-djet2/master/docs/_static/screen2_720.png
     :alt: Screenshot #2
     :align: center
-    :target: https://raw.githubusercontent.com/tikservices/django-jet2/master/docs/_static/screen2.png
+    :target: https://raw.githubusercontent.com/djungle-io/django-djet2/master/docs/_static/screen2.png
 
 Sidemenu
 
-.. image:: https://raw.githubusercontent.com/tikservices/django-jet2/master/docs/_static/screen3_720.png
+.. image:: https://raw.githubusercontent.com/djungle-io/django-djet2/master/docs/_static/screen3_720.png
     :alt: Screenshot #3
     :align: center
-    :target: https://raw.githubusercontent.com/tikservices/django-jet2/master/docs/_static/screen3.png
+    :target: https://raw.githubusercontent.com/djungle-io/django-djet2/master/docs/_static/screen3.png
 
 Installation
 ============
@@ -62,9 +57,7 @@ Installation
 
 .. code:: python
 
-    pip install django-jet2
-    # or
-    easy_install django-jet2
+    pip install django-djet2
 
 * Add 'jet' application to the INSTALLED_APPS setting of your Django project settings.py file (note it should be before 'django.contrib.admin'):
 
