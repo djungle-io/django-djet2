@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     browserify = require('browserify'),
     concatCss = require('gulp-concat-css'),
     cleanCSS = require('gulp-clean-css'),
-    sass = require('gulp-sass'),
+    sass = require('gulp-sass')(require('node-sass')),
     uglify = require('gulp-uglify'),
     buffer = require('vinyl-buffer'),
     source = require('vinyl-source-stream'),
@@ -81,11 +81,9 @@ gulp.task('vendor-styles', function() {
                     console.error(error);
                 }),
             gulp.src([
-                './node_modules/perfect-scrollbar/src/css/main.scss'
+                './node_modules/perfect-scrollbar/css/perfect-scrollbar.css'
             ])
-                .pipe(sass({
-                    outputStyle: 'compressed'
-                }))
+                .pipe(cleanCSS())
                 .on('error', function(error) {
                     console.error(error);
                 })
@@ -121,12 +119,12 @@ gulp.task('vendor-translations', function() {
 
 gulp.task('locales', shell.task('python manage.py compilemessages', { quiet: true }));
 
-gulp.task('build', ['scripts', 'styles', 'vendor-styles', 'vendor-translations', 'locales']);
+gulp.task('build', gulp.parallel('scripts', 'styles', 'vendor-styles', 'vendor-translations', 'locales'));
 
 gulp.task('watch', function() {
-    gulp.watch('./jet/static/jet/js/src/**/*.js', ['scripts']);
-    gulp.watch('./jet/static/jet/css/**/*.scss', ['styles']);
-    gulp.watch(['./jet/locale/**/*.po', './jet/dashboard/locale/**/*.po'], ['locales']);
+    gulp.watch('./jet/static/jet/js/src/**/*.js', gulp.series('scripts'));
+    gulp.watch('./jet/static/jet/css/**/*.scss', gulp.series('styles'));
+    gulp.watch(['./jet/locale/**/*.po', './jet/dashboard/locale/**/*.po'], gulp.series('locales'));
 });
 
-gulp.task('default', ['build', 'watch']);
+gulp.task('default', gulp.parallel('build', 'watch'));
