@@ -120,6 +120,7 @@ gulp.task('vendor-translations', function() {
 gulp.task('locales', shell.task('python manage.py compilemessages', { quiet: true }));
 
 gulp.task('build', gulp.parallel('scripts', 'styles', 'vendor-styles', 'vendor-translations', 'locales'));
+gulp.task('build-js', gulp.parallel('scripts', 'styles', 'vendor-styles', 'vendor-translations'));
 
 gulp.task('watch', function() {
     gulp.watch('./jet/static/jet/js/src/**/*.js', gulp.series('scripts'));
