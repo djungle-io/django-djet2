@@ -2610,9 +2610,9 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
-"jquery-ui@git://github.com/jquery/jquery-ui.git#1.11.4":
+"jquery-ui@https://github.com/jquery/jquery-ui.git#1.11.4":
   version "1.11.4"
-  resolved "git://github.com/jquery/jquery-ui.git#d6713024e16de90ea71dc0544ba34e1df01b4d8a"
+  resolved "https://github.com/jquery/jquery-ui.git#d6713024e16de90ea71dc0544ba34e1df01b4d8a"
 
 jquery.cookie@1.4.1:
   version "1.4.1"
@@ -4690,9 +4690,9 @@ time-stamp@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/time-stamp/-/time-stamp-1.0.1.tgz#9f4bd23559c9365966f3302dbba2b07c6b99b151"
 
-"timepicker@git://github.com/geex-arts/timepicker.git":
+"timepicker@https://github.com/geex-arts/timepicker.git":
   version "0.3.3"
-  resolved "git://github.com/geex-arts/timepicker.git#af182e40781fbcc4404547c7949e1610e4e9c184"
+  resolved "https://github.com/geex-arts/timepicker.git#af182e40781fbcc4404547c7949e1610e4e9c184"
   dependencies:
     jquery ">=1.5.1"
 
