@@ -1,6 +1,11 @@
 Changelog
 =========
 
+
+1.0.14
+------
+* Fix DateRangeFilter integration
+
 1.0.13
 ------
 * Fix compatibility with Django 3.2+
