@@ -42,34 +42,13 @@ class RelatedFieldAjaxListFilter(RelatedFieldListFilter):
 
 
 try:
-    from collections import OrderedDict
     from django import forms
-    from django.contrib.admin.widgets import AdminDateWidget
     from rangefilter.filter import DateRangeFilter as OriginalDateRangeFilter
-    from django.utils.translation import gettext as _
 
 
     class DateRangeFilter(OriginalDateRangeFilter):
         def get_template(self):
             return 'rangefilter/date_filter.html'
-
-        def _get_form_fields(self):
-            # this is here, because in parent DateRangeFilter AdminDateWidget
-            # could be imported from django-suit
-            return OrderedDict((
-                (self.lookup_kwarg_gte, forms.DateField(
-                    label='',
-                    widget=AdminDateWidget(attrs={'placeholder': _('From date')}),
-                    localize=True,
-                    required=False
-                )),
-                (self.lookup_kwarg_lte, forms.DateField(
-                    label='',
-                    widget=AdminDateWidget(attrs={'placeholder': _('To date')}),
-                    localize=True,
-                    required=False
-                )),
-            ))
 
         @staticmethod
         def _get_media():
