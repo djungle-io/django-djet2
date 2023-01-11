@@ -25,16 +25,25 @@ ToolbarUpdater.prototype = {
 
         $changelist.find('#changelist-filter').children().each(function() {
             var $element = $(this);
+            const tagName = $element.prop('tagName');
 
-            if ($element.prop('tagName') == 'H3') {
+            if (tagName == 'H3') {
                 filterName = $element.text();
-            } else if ($element.prop('tagName') == 'UL') {
+            } else if (tagName == 'UL' || tagName == 'DETAILS') {
+		// on django 4.1+ the ul is included in the details tag
+                const django41 = tagName == 'DETAILS';
+                if (django41) {
+                    filterName = $element.find('summary').first().text();
+                }
+
                 var $select = $('<select>');
                 var $items = $element.find('li');
 
-                $.each($element.prop('attributes'), function() {
-                    $select.attr(this.name, this.value);
-                });
+                if (!django41) {
+                    $.each($element.prop('attributes'), function() {
+                        $select.attr(this.name, this.value);
+                    });
+                }
 
                 $select.addClass('changelist-filter-select');
 
