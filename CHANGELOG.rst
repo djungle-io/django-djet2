@@ -1,6 +1,9 @@
 Changelog
 =========
 
+1.0.15
+------
+* Fix filters with Django 4.1+
 
 1.0.14
 ------
