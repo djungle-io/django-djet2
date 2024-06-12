@@ -43,7 +43,10 @@ class RelatedFieldAjaxListFilter(RelatedFieldListFilter):
 
 try:
     from django import forms
-    from rangefilter.filter import DateRangeFilter as OriginalDateRangeFilter
+    try:
+        from rangefilter.filter import DateRangeFilter as OriginalDateRangeFilter
+    except ImportError:
+        from rangefilter.filters import DateRangeFilter as OriginalDateRangeFilter
 
 
     class DateRangeFilter(OriginalDateRangeFilter):
