@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.0.17
+------
+* Implement logout with POST
+
 1.0.16
 ------
 * Fix compatibility with django-admin-rangefilter >= 0.12.0
