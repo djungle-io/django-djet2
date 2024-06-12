@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.0.16
+------
+* Fix compatibility with django-admin-rangefilter >= 0.12.0
+
 1.0.15
 ------
 * Fix filters with Django 4.1+
