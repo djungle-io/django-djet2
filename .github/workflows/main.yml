@@ -38,10 +38,11 @@ jobs:
       run: tox --py current
 
     - name: Upload coverage data
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
-        name: coverage-data
+        name: coverage-data-${{ matrix.python-version }}
         path: '.coverage.*'
+        include-hidden-files: 'true'
 
   coverage:
     name: Coverage
@@ -58,9 +59,9 @@ jobs:
         run: python -m pip install --upgrade coverage[toml]
 
       - name: Download data
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
-          name: coverage-data
+          merge-multiple: 'true'
 
       - name: Combine coverage
         run: |
@@ -70,7 +71,7 @@ jobs:
 
       - name: Upload HTML report
         if: ${{ failure() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: html-report
           path: htmlcov
