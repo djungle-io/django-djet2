@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.0.18
+------
+* Drop usage of `length_is` template filter in favor of `length`
+
 1.0.17
 ------
 * Implement logout with POST
@@ -319,7 +323,3 @@ Changelog
 -----
 
 * Initial release
-
-
-
-
